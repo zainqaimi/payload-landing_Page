@@ -1,11 +1,10 @@
 import { getPayload } from 'payload'
 import React from 'react'
-
 import config from '@/payload.config'
-import './styles.css'
 import HeroBlock from './components/HeroBlock'
 import { Page } from '@/payload-types'
 import ContentBlock from './components/ContentBlock'
+import NewsLetterFormBLock from './components/NewsLetterFormBlock'
 
 export default async function HomePage() {
   const payloadConfig = await config
@@ -27,8 +26,10 @@ export default async function HomePage() {
         return <HeroBlock block={block} key={block.id} />
       case 'content':
         return <ContentBlock block={block} key={block.id} />
+      case 'newsletterform':
+        return <NewsLetterFormBLock block={block} key={block.id} />
       default:
-        return <p>Some thing went wrong...</p>
+        return null
     }
   }
   return (
